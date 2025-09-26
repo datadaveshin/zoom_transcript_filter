@@ -4,7 +4,7 @@
 # 2. Concatenates the lines that a speaker says if they are consecutive,
 # but transcribed separately
 
-# Usage: ./transcript_filter.sh <filename>
+# Usage: transcript_filter.sh <filename>
 
 INPUT_FILE=$1
 OUTPUT_FILE="${INPUT_FILE%.txt}.out.txt"
@@ -15,7 +15,7 @@ if [[ -z "$INPUT_FILE" ]]; then
   echo "Please enter a filename after the command."
   echo "Example:"
   echo
-  echo "./transcript_filter.sh my_transcript.txt"
+  echo "transcript_filter.sh my_transcript.txt"
   echo
   exit 1
 fi
@@ -26,11 +26,11 @@ if [[ -n "$2" ]]; then
   echo "You supplied more than one filename argument."
   echo "If the filename has spaces, please use quotes:"
   echo
-  echo './transcript_filter.sh "Presentation with spaces.txt"'
+  echo 'transcript_filter.sh "Presentation with spaces.txt"'
   echo
   echo "Or manually escape spaces:"
   echo
-  echo "./transcript_filter.sh Presentation\\ with\\ spaces.txt"
+  echo "transcript_filter.sh Presentation\\ with\\ spaces.txt"
   echo
   exit 1
 fi
@@ -62,7 +62,7 @@ while IFS= read -r line; do
   if [[ $line =~ ^\[.*\]$ ]]; then
     SPEAKER=$line
     if [[ "$SPEAKER" != "$CURRENT_SPEAKER" ]]; then
-       # if not the very first block, terminate previous line and add a blank line
+       # If not the very first block, terminate previous line and add a blank line
        if [[ -n "$CURRENT_SPEAKER" ]]; then
          printf "\n\n" >> "$OUTPUT_FILE"
        fi
