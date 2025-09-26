@@ -7,7 +7,7 @@
 # Usage: ./transcript_filter.sh <filename>
 
 INPUT_FILE=$1
-OUTPUT_FILE="$INPUT_FILE.out.txt"
+OUTPUT_FILE="${INPUT_FILE%.txt}.out.txt"
 
 # Check for filename after the command
 if [[ -z "$INPUT_FILE" ]]; then
@@ -64,7 +64,7 @@ while IFS= read -r line; do
     if [[ "$SPEAKER" != "$CURRENT_SPEAKER" ]]; then
        # if not the very first block, terminate previous line and add a blank line
        if [[ -n "$CURRENT_SPEAKER" ]]; then
-         printf "\n\n" >> $OUTPUT_FILE
+         printf "\n\n" >> "$OUTPUT_FILE"
        fi
        echo "$SPEAKER" >> "$OUTPUT_FILE"
        CURRENT_SPEAKER=$SPEAKER
