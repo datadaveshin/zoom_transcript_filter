@@ -4,7 +4,7 @@
 # 2. Concatenates the lines that a speaker says if they are consecutive,
 # but transcribed separately
 
-# Usage: transcript_filter.sh <filename>
+# Usage: zoom_transcript_filter <filename>
 
 INPUT_FILE=$1
 OUTPUT_FILE="${INPUT_FILE%.txt}.out.txt"
