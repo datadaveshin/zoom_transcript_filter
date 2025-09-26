@@ -6,23 +6,6 @@
 
 # Usage: ./transcript_filter.sh <filename>
 
-
-# while getopts ":hi" opt; do
-#   case "$opt" in
-#     h)
-#       sed -n '2,6p' "$0" | sed 's/^# \{0,1\}//'
-#       exit 0
-#       ;;
-#       i) INPUT_FILE="$OPTARG" ;;
-#       :)
-#         echo "Option - $OPTARG requires an argument" >&2; exit 1 ;;
-#       \?)
-#         echo "Invalid option: -$OPTARG" >&2; exit 1 ;;
-#   esac
-# done
-# shift $((OPTIND - 1))
-# echo "File: $INPUT_FILE"
-
 INPUT_FILE=$1
 
 if [[ -z "$INPUT_FILE" ]]; then
@@ -47,6 +30,13 @@ if [[ -n "$2" ]]; then
   echo "Example:"
   echo
   echo '% transcript_filter.sh "Presentation\ on\ not\ using\ spaces\ in\ filenames.txt"'
+  echo
+  exit 1
+fi
+
+if [[ ! -f "$INPUT_FILE" ]]; then
+  echo
+  echo "Error: File '$INPUT_FILE' does not exist or is not a regular file."
   echo
   exit 1
 fi
